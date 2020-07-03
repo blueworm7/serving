@@ -21,6 +21,7 @@ limitations under the License.
 #include "tensorflow/core/framework/tensor.h"
 #include "tensorflow/core/framework/types.h"
 #include "tensorflow/core/lib/core/errors.h"
+#include "tensorflow/core/ops/array_ops.h"
 
 namespace tensorflow {
 namespace serving {
@@ -91,8 +92,9 @@ struct PadTensor {
     }
     *output = Tensor(input.dtype(), output_shape);
     typename TTypes<T, num_dims>::Tensor inputs = input.tensor<T, num_dims>();
-    //T pad_value(input.flat<T>()(0));  // using existing values in padding
-    T pad_value(Tensor<T>(int32 0));  // using existing values in padding
+    T pad_value(output->flat<T>()(0));  // using existing values in padding
+    //T pad_value(Tensor<T>(int32 0));  // using existing values in padding
+    //pad_value.vec<T>(0) = 0;  // using existing values in padding
     output->tensor<T, num_dims>() = inputs.pad(padding, pad_value);
     return Status::OK();
   }
