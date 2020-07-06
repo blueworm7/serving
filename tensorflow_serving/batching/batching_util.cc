@@ -21,7 +21,6 @@ limitations under the License.
 #include "tensorflow/core/framework/tensor.h"
 #include "tensorflow/core/framework/types.h"
 #include "tensorflow/core/lib/core/errors.h"
-#include "tensorflow/core/ops/array_ops.h"
 
 namespace tensorflow {
 namespace serving {
