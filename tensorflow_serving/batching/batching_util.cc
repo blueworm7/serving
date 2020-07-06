@@ -61,6 +61,24 @@ Eigen::array<OneDimPadding, num_dims> CreatePadding(
   return padding;
 }
 
+template<typename T>
+T get_zero(T& x)
+{
+        return x;
+}
+
+template<>
+float get_zero<float>(float& x)
+{
+        return 0.0;
+}
+
+template<>
+int get_zero<int>(int& x)
+{
+        return 0;
+}
+
 // Functor, which performs padding of given input tensor
 // using specified padding signature.
 // For example, given tensor of shape [1, 2, 3] and padding signature
@@ -93,9 +111,7 @@ struct PadTensor {
     *output = Tensor(input.dtype(), output_shape);
     typename TTypes<T, num_dims>::Tensor inputs = input.tensor<T, num_dims>();
     T pad_value(output->flat<T>()(0));  // using existing values in padding
-    //T pad_value(Tensor<T>(int32 0));  // using existing values in padding
-    //pad_value.vec<T>(0) = 0;  // using existing values in padding
-    output->tensor<T, num_dims>() = inputs.pad(padding, pad_value);
+    pad_value = get_zero<T>(pad_value);
     return Status::OK();
   }
 };
