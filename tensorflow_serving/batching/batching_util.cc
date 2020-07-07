@@ -73,7 +73,25 @@ float get_zero<float>(float& x)
 }
 
 template<>
+double get_zero<double>(double& x)
+{
+        return 0.0;
+}
+
+template<>
 int get_zero<int>(int& x)
+{
+        return 0;
+}
+
+template<>
+long get_zero<long>(long& x)
+{
+        return 0;
+}
+
+template<>
+unsigned int get_zero<unsigned int>(unsigned int& x)
 {
         return 0;
 }
