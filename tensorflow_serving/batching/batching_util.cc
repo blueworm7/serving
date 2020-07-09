@@ -67,6 +67,18 @@ T get_zero(T& x)
 }
 
 template<>
+char get_zero<char>(char& x)
+{
+        return '\0';
+}
+
+template<>
+unsigned char get_zero<unsigned char>(unsigned char& x)
+{
+        return '\0';
+}
+
+template<>
 float get_zero<float>(float& x)
 {
         return 0.0;
@@ -92,6 +104,12 @@ long get_zero<long>(long& x)
 
 template<>
 unsigned int get_zero<unsigned int>(unsigned int& x)
+{
+        return 0;
+}
+
+template<>
+unsigned long get_zero<unsigned long>(unsigned long& x)
 {
         return 0;
 }
