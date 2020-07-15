@@ -13,7 +13,7 @@
 # limitations under the License.
 
 ARG TF_SERVING_VERSION=20.07.15
-ARG TF_SERVING_BUILD_IMAGE=sa_104714913194317373801/tensorflow-serving-devel-gpu
+ARG TF_SERVING_BUILD_IMAGE=sa_104714913194317373801/tensorflow-serving-devel-gpu:20.07.15
 
 FROM ${TF_SERVING_BUILD_IMAGE} as build_image
 FROM nvidia/cuda:10.1-base-ubuntu18.04
