@@ -146,7 +146,7 @@ struct PadTensor {
     *output = Tensor(input.dtype(), output_shape);
     typename TTypes<T, num_dims>::Tensor inputs = input.tensor<T, num_dims>();
     T pad_value(output->flat<T>()(0));  // using existing values in padding
-    pad_value = get_zero<T>(pad_value);
+    //pad_value = get_zero<T>(pad_value);
     return Status::OK();
   }
 };
