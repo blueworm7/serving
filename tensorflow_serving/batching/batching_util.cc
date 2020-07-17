@@ -36,6 +36,60 @@ struct OneDimPadding {
   int64 second;  // pad after
 };
 
+template<typename T>
+T get_zero(T& x)
+{
+        return x;
+}
+
+template<>
+char get_zero<char>(char& x)
+{
+        return '\0';
+}
+
+template<>
+unsigned char get_zero<unsigned char>(unsigned char& x)
+{
+        return '\0';
+}
+
+template<>
+float get_zero<float>(float& x)
+{
+        return 0.0;
+}
+
+template<>
+double get_zero<double>(double& x)
+{
+        return 0.0;
+}
+
+template<>
+int get_zero<int>(int& x)
+{
+        return 0;
+}
+
+template<>
+long get_zero<long>(long& x)
+{
+        return 0;
+}
+
+template<>
+unsigned int get_zero<unsigned int>(unsigned int& x)
+{
+        return 0;
+}
+
+template<>
+unsigned long get_zero<unsigned long>(unsigned long& x)
+{
+        return 0;
+}
+
 // Constructs array of paddings, where:
 // paddings[i].first - number of objects to add before elements in dimension i
 // of given tensor,
@@ -92,6 +146,7 @@ struct PadTensor {
     *output = Tensor(input.dtype(), output_shape);
     typename TTypes<T, num_dims>::Tensor inputs = input.tensor<T, num_dims>();
     T pad_value(input.flat<T>()(0));  // using existing values in padding
+    pad_value = get_zero<T>(pad_value);
     output->tensor<T, num_dims>() = inputs.pad(padding, pad_value);
     return Status::OK();
   }
