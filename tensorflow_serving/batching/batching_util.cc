@@ -151,18 +151,6 @@ qint32 get_zero<qint32>(qint32& x)
         return 0;
 }
 
-template<>
-bfloat16 get_zero<bfloat16>(bfloat16& x)
-{
-        return 0.0;
-}
-
-template<>
-const char* get_zero<const char*>(const char* x)
-{
-        return x;
-}
-
 //tstring
 //Eigen::half
 //ResourceHandle
