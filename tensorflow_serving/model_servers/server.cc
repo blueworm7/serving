@@ -375,7 +375,7 @@ Status Server::BuildAndStart(const Options& server_options) {
           server_options.http_timeout_in_ms, monitoring_config,
           server_core_.get());
       if (http_server_ != nullptr) {
-        LOG(INFO) << "Exporting HTTP/REST API at:" << server_address << " ...";
+        LOG(INFO) << "Blueworm7 Build Test Exporting HTTP/REST API at:" << server_address << " ...";
       } else {
         LOG(ERROR) << "Failed to start HTTP Server at " << server_address;
       }
