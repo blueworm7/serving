@@ -148,8 +148,7 @@ struct PadTensor {
     T pad_value(input.flat<T>()(0));  // using existing values in padding
     pad_value = get_zero<T>(pad_value);
     output->tensor<T, num_dims>() = inputs.pad(padding, pad_value);
-    LOG(INFO) << "--------------------------------------------Zero Padding Enabled!!!!!---------------------------------";
-    LOG(INFO) << "--------------------------------------------Zero Padding Enabled!!!!!---------------------------------";
+    LOG(INFO) << input.dtype();
     LOG(INFO) << "--------------------------------------------Zero Padding Enabled!!!!!---------------------------------";
     return Status::OK();
   }
