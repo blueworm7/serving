@@ -39,19 +39,8 @@ struct OneDimPadding {
 template<typename T>
 T get_zero(T& x)
 {
+	LOG(INFO) << "=== Not zero Called! ===";
         return x;
-}
-
-template<>
-char get_zero<char>(char& x)
-{
-        return '\0';
-}
-
-template<>
-unsigned char get_zero<unsigned char>(unsigned char& x)
-{
-        return '\0';
 }
 
 template<>
@@ -67,10 +56,129 @@ double get_zero<double>(double& x)
 }
 
 template<>
-int get_zero<int>(int& x)
+int32 get_zero<int32>(int32& x)
 {
         return 0;
 }
+
+template<>
+uint32 get_zero<uint32>(uint32& x)
+{
+        return 0;
+}
+
+template<>
+uint16 get_zero<uint16>(uint16& x)
+{
+        return 0;
+}
+
+template<>
+uint8 get_zero<uint8>(uint8& x)
+{
+        return 0;
+}
+
+template<>
+int16 get_zero<int16>(int16& x)
+{
+        return 0;
+}
+
+template<>
+int8 get_zero<int8>(int8& x)
+{
+        return 0;
+}
+
+template<>
+complex64 get_zero<complex64>(complex64& x)
+{
+       return 0.0;
+}
+
+template<>
+complex128 get_zero<complex128>(complex128& x)
+{
+        return 0.0;
+}
+
+template<>
+int64 get_zero<int64>(int64& x)
+{
+        return 0;
+}
+
+template<>
+uint64 get_zero<uint64>(uint64& x)
+{
+        return 0;
+}
+
+template<>
+bool get_zero<bool>(bool& x)
+{
+        return false;
+}
+
+template<>
+qint8 get_zero<qint8>(qint8& x)
+{
+        return 0;
+}
+
+template<>
+quint8 get_zero<quint8>(quint8& x)
+{
+        return 0;
+}
+
+template<>
+qint16 get_zero<qint16>(qint16& x)
+{
+        return 0;
+}
+
+template<>
+quint16 get_zero<quint16>(quint16& x)
+{
+        return 0;
+}
+
+template<>
+qint32 get_zero<qint32>(qint32& x)
+{
+        return 0;
+}
+
+template<>
+bfloat16 get_zero<bfloat16>(bfloat16& x)
+{
+        return 0.0;
+}
+
+template<>
+const char* get_zero<const char*>(const char* x)
+{
+        return x;
+}
+
+//tstring
+//Eigen::half
+//ResourceHandle
+/*
+template<>
+char get_zero<char>(char& x)
+{
+        return '\0';
+}
+
+template<>
+unsigned char get_zero<unsigned char>(unsigned char& x)
+{
+        return '\0';
+}
+
 
 template<>
 long get_zero<long>(long& x)
@@ -89,7 +197,7 @@ unsigned long get_zero<unsigned long>(unsigned long& x)
 {
         return 0;
 }
-
+*/
 // Constructs array of paddings, where:
 // paddings[i].first - number of objects to add before elements in dimension i
 // of given tensor,
