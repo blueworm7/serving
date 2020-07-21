@@ -39,7 +39,7 @@ struct OneDimPadding {
 template<typename T>
 T get_zero(T& x)
 {
-	LOG(INFO) << "=== Not zero Called! ===";
+	LOG(INFO) << "Padding Value is Not zero, using first value.";
         return x;
 }
 
@@ -151,41 +151,6 @@ qint32 get_zero<qint32>(qint32& x)
         return 0;
 }
 
-//tstring
-//Eigen::half
-//ResourceHandle
-/*
-template<>
-char get_zero<char>(char& x)
-{
-        return '\0';
-}
-
-template<>
-unsigned char get_zero<unsigned char>(unsigned char& x)
-{
-        return '\0';
-}
-
-
-template<>
-long get_zero<long>(long& x)
-{
-        return 0;
-}
-
-template<>
-unsigned int get_zero<unsigned int>(unsigned int& x)
-{
-        return 0;
-}
-
-template<>
-unsigned long get_zero<unsigned long>(unsigned long& x)
-{
-        return 0;
-}
-*/
 // Constructs array of paddings, where:
 // paddings[i].first - number of objects to add before elements in dimension i
 // of given tensor,
@@ -244,8 +209,6 @@ struct PadTensor {
     T pad_value(input.flat<T>()(0));  // using existing values in padding
     pad_value = get_zero<T>(pad_value);
     output->tensor<T, num_dims>() = inputs.pad(padding, pad_value);
-    LOG(INFO) << input.dtype();
-    LOG(INFO) << "--------------------------------------------Zero Padding Enabled!!!!!---------------------------------";
     return Status::OK();
   }
 };
